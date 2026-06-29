@@ -443,7 +443,7 @@ export function PreviewPanel({
                         Reload
                       </Button>
                     </div>
-                    <pre className="px-3 py-2 text-xs text-destructive whitespace-pre-wrap break-words font-mono leading-relaxed">
+                    <pre className="px-3 py-2 text-xs text-destructive whitespace-pre-wrap wrap-break-word font-mono leading-relaxed">
                       {displayError}
                     </pre>
                   </div>
@@ -454,7 +454,7 @@ export function PreviewPanel({
         </div>
 
         {consoleOpen && (
-          <div className="h-[200px] shrink-0 border-t border-border">
+          <div className="h-50 shrink-0 border-t border-border">
             <ConsolePanel logs={consoleLogs} onClear={onClearConsole} />
           </div>
         )}
