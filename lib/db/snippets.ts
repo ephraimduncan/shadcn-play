@@ -1,4 +1,4 @@
-import { createClient } from "@libsql/client";
+import { createClient } from "@libsql/client/web";
 
 let ensureColumnsPromise: Promise<void> | null = null;
 

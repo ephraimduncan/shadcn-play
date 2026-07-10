@@ -5,12 +5,17 @@
   "scripts": {
     "dev": "next dev",
     "predev": "bun run build:playground",
-    "build": "bun run build:playground && next build",
+    "build": "opennextjs-cloudflare build",
+    "build:next": "bun run build:playground && next build",
     "build:playground:modules": "bun scripts/build-playground-modules.ts",
     "build:playground:types": "bun scripts/build-playground-types.ts",
     "build:playground": "bun run build:playground:modules && bun run build:playground:types",
     "sync:shadcn-examples": "bun scripts/sync-shadcn-examples.ts",
     "start": "next start",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "lint": "eslint",
     "test": "bun test ./tests",
     "pretypecheck": "bun run build:playground:types",
@@ -20,8 +25,9 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",
-    "@libsql/client": "^0.17.0",
+    "@libsql/client": "^0.17.4",
     "@monaco-editor/react": "^4.7.0",
+    "@opennextjs/cloudflare": "^1.20.1",
     "@tabler/icons-react": "^3.36.1",
     "@tailwindcss/language-service": "^0.14.29",
     "agentation": "^2.2.0",
@@ -64,14 +70,17 @@
     "eslint-config-next": "16.1.6",
     "react-grab": "^0.1.13",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.110.0"
   },
   "ignoreScripts": [
     "sharp",
     "unrs-resolver"
   ],
   "trustedDependencies": [
+    "esbuild",
     "sharp",
-    "unrs-resolver"
+    "unrs-resolver",
+    "workerd"
   ]
 }
